@@ -10,17 +10,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         supportActionBar!!.elevation = 0f   // remove action bar drop shadow
     }//onCreate
 
     // change page to each workout category
-    fun workoutType(view: View) {
-        val intent = Intent(this, WorkoutActivity::class.java)
+    fun add(view: View) {
+        val intent = Intent(this, AddActivity::class.java)
         intent.putExtra("Tag", view.tag.toString())
         startActivity(intent)
-    } // animal
+    } // workout
 
-    fun test(view: View) {
-        Toast.makeText(applicationContext, "HELLO", Toast.LENGTH_LONG).show()
-    }
-}
+    // change page to each workout category
+    fun log(view: View) {
+        val intent = Intent(this, LogActivity::class.java)
+        startActivity(intent)
+    } // workout
+
+} // MainActivity

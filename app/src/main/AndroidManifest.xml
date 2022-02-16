@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COSC253HW4MyWorkouts">
         <activity
-            android:name=".WorkoutActivity"
+            android:name=".AddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LogActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

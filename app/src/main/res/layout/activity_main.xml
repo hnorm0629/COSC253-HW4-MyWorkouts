@@ -4,92 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9CAF88"
+    android:background="@color/green"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Choose Your Exercise Category"
+        android:layout_marginTop="40dp"
+        android:text="@string/exercise"
+        android:textColor="@color/white_green"
         android:textSize="20sp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/core"
-        android:layout_width="160dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:onClick="workoutType"
-        android:tag="core"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/core" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintBottom_toTopOf="@id/log">
+
+        <ImageView
+            android:id="@+id/yoga"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:onClick="add"
+            android:tag="Yoga"
+            app:layout_row="0"
+            app:layout_column="0"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            android:src="@drawable/yoga" />
+
+        <ImageView
+            android:id="@+id/weights"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:onClick="add"
+            android:tag="Weights"
+            app:layout_row="0"
+            app:layout_column="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            android:src="@drawable/weights" />
+
+        <ImageView
+            android:id="@+id/machine"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:onClick="add"
+            android:tag="Machine"
+            app:layout_row="1"
+            app:layout_column="0"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            android:src="@drawable/machine" />
+
+        <ImageView
+            android:id="@+id/cardio"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:onClick="add"
+            android:tag="Cardio"
+            app:layout_row="1"
+            app:layout_column="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            android:src="@drawable/cardio" />
+
+    </androidx.gridlayout.widget.GridLayout>
 
     <ImageView
-        android:id="@+id/weights"
-        android:layout_width="160dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="workoutType"
-        android:tag="pig"
+        android:id="@+id/log"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="log"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/weights" />
-
-    <ImageView
-        android:id="@+id/bike"
-        android:layout_width="160dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:onClick="workoutType"
-        android:tag="bike"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/core"
-        app:srcCompat="@drawable/bike" />
-
-    <ImageView
-        android:id="@+id/cardio"
-        android:layout_width="160dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="workoutType"
-        android:tag="cardio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weights"
-        app:srcCompat="@drawable/cardio" />
-
-    <ImageView
-        android:id="@+id/stretching"
-        android:layout_width="160dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:onClick="workoutType"
-        android:tag="stretching"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bike"
-        app:srcCompat="@drawable/stretching" />
-
-    <ImageView
-        android:id="@+id/yoga"
-        android:layout_width="160dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="workoutType"
-        android:tag="yoga"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardio"
-        app:srcCompat="@drawable/yoga" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/log" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">COSC253-HW4-MyWorkouts</string>
+    <string name="app_name">Track My Workouts</string>
+    <string name="exercise"><i><b>Choose an exercise type or view log.</b></i></string>
+    <string name="back">BACK</string>
+    <string name="add_exercise">Add Exercise</string>
+
+    <!-- Add activity -->
+    <string name="name">Name:</string>
+    <string name="nameFormat"><i>What\'s your exercise called?</i></string>
+    <string name="notes">Notes:</string>
+    <string name="noteFormat"><i>Jot something down…</i></string>
+    <string name="dates">Date:</string>
+    <string name="dateFormat"><i>MM/DD/YYYY</i></string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
 </resources>
