@@ -5,12 +5,18 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import java.util.ArrayList
+
+/*
+Hannah Norman
+Sophia Petersen
+COSC-253 HW4
+02/16/2022
+ */
 
 lateinit var sharedPreferences: SharedPreferences
 lateinit var arrayAdapter: ArrayAdapter<*>
@@ -32,21 +38,19 @@ class LogActivity : AppCompatActivity() {
         list = findViewById(R.id.list)
         getData()
         listNames = getLabels()
-
         arrayAdapter = ArrayAdapter(this, R.layout.list_item, listNames)
         list.adapter = arrayAdapter
 
-        // click item in list and edit / view
+        // click item in list to view and edit
         list.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, i, l ->
                 val intent = Intent(applicationContext, EditActivity::class.java)
                 intent.putExtra("idx", i)
                 startActivity(intent)
             } // OnItemClickListener
-
     } // onCreate
 
-    //go back to workout selection page from individual workout list
+    // return to main menu
     fun back(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -85,7 +89,7 @@ class LogActivity : AppCompatActivity() {
             dates = ArrayList(newExercises)
         } // if
 
-        // deserialize dates object
+        // deserialize tags object
         newExercises = ObjectSerializer
             .deserialize(
                 sharedPreferences.getString("tag", ObjectSerializer.serialize(ArrayList<String>()))
@@ -96,6 +100,7 @@ class LogActivity : AppCompatActivity() {
 
     } // getData
 
+    // create custom labels for exercise log entries
     fun getLabels(): ArrayList<String> {
         val labels = ArrayList<String>()
         for (i in 0..(names.size-1)) {
@@ -103,6 +108,6 @@ class LogActivity : AppCompatActivity() {
             labels.add(label)
         } // for
         return labels
-    } // getListNames
+    } // getLabels
 
 } // LogActivity

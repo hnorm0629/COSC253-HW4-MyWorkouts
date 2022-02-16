@@ -1,11 +1,21 @@
 package com.example.cosc253_hw4_myworkouts
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
+
+/*
+Hannah Norman
+Sophia Petersen
+COSC-253 HW4
+02/16/2022
+ */
 
 class EditActivity : AppCompatActivity() {
     private lateinit var name: EditText
@@ -16,7 +26,7 @@ class EditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
-        title = "View Exercise or Edit Note"
+        title = "View Exercise"
 
         // populate exercise page with data
         itemIdx = intent.getIntExtra("idx", -1)
@@ -26,7 +36,6 @@ class EditActivity : AppCompatActivity() {
         name.setText(names[itemIdx])
         note.setText(notes[itemIdx])
         date.setText(dates[itemIdx])
-
     } // onCreate
 
     // save data to shared preferences, add entry to exercise log
@@ -43,18 +52,43 @@ class EditActivity : AppCompatActivity() {
         sharedPreferences.edit().putString("note", ObjectSerializer.serialize(notes)).apply()
         sharedPreferences.edit().putString("date", ObjectSerializer.serialize(dates)).apply()
 
-        // TODO: alert dialog - Success! View entry in exercise log. (OK)
-
-        val intent = Intent(this, LogActivity::class.java)
-        startActivity(intent)
+        // success alert dialog
+        AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
+            .setIcon(android.R.drawable.ic_dialog_info)
+            .setTitle("Success!")
+            .setMessage("You can view this exercise in the log.")
+            .setNeutralButton("OK", DialogInterface.OnClickListener {
+                    dialog, id ->
+                val intent = Intent(this, LogActivity::class.java)
+                startActivity(intent)
+                finish()
+            }).show()
     } // save
 
-    // return to main menu, save nothing
+    // return to log, save nothing
     fun cancel(view: View) {
-        // TODO alert dialog - Are you sure you want to cancel? (Yes/No)
-
-        val intent = Intent(this, LogActivity::class.java)
-        startActivity(intent)
+        // cancel alert dialog
+        AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setTitle("Are you sure you wish to cancel?")
+            .setMessage("Your changes will not be saved.")
+            .setPositiveButton("Yes", DialogInterface.OnClickListener {
+                    dialog, id ->
+                val intent = Intent(this, LogActivity::class.java)
+                startActivity(intent)
+                finish()
+            })
+            .setNegativeButton("No", DialogInterface.OnClickListener { dialog, id ->
+            }).show()
     } // cancel
+
+    // display toast alerts if user attempts to edit name or date
+    fun toast(view: View) {
+        if (view.tag == "addName") {
+            Toast.makeText(applicationContext, "Cannot edit name!", Toast.LENGTH_SHORT).show()
+        } else if (view.tag == "addDate") {
+            Toast.makeText(applicationContext, "Cannot edit date!", Toast.LENGTH_SHORT).show()
+        } // if-elif
+    } // toast
 
 } // EditActivity

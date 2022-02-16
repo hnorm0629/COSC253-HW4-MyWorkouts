@@ -4,7 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+
+/*
+Hannah Norman
+Sophia Petersen
+COSC-253 HW4
+02/16/2022
+ */
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,17 +20,17 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.elevation = 0f   // remove action bar drop shadow
     }//onCreate
 
-    // change page to each workout category
+    // add exercise to exercise log from each category
     fun add(view: View) {
         val intent = Intent(this, AddActivity::class.java)
         intent.putExtra("Tag", view.tag.toString())
         startActivity(intent)
-    } // workout
+    } // add
 
-    // change page to each workout category
+    // switch to exercise log activity
     fun log(view: View) {
         val intent = Intent(this, LogActivity::class.java)
         startActivity(intent)
-    } // workout
+    } // log
 
 } // MainActivity

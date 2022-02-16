@@ -15,4 +15,11 @@
         <item name="android:textColorHighlight">@color/white_green</item>
         <item name="android:textColorHint">@color/white_green</item>
     </style>
+
+    <!-- Alert dialog style -->
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/darkest_green</item>
+        <item name="android:textColorPrimary">@color/white_green</item>
+        <item name="android:background">@color/green</item>
+    </style>
 </resources>
